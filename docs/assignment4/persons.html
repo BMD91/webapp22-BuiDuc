@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>Unidirectional Association Example App: Manage Publishers</title>
+  <title>Unidirectional Association App: Manage Persons</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
   <meta name="theme-color" content="#ffffff"/>
@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/normalize.css"/>
   <link rel="stylesheet" href="css/main.css"/>
 
-  <script src="src/v/publishers.mjs" type="module"></script>
+  <script src="src/v/persons.mjs" type="module"></script>
 </head>
 <body>
 <header>
@@ -28,9 +28,8 @@
     </div>
     <nav>
       <ul>
-        <li><a href="authors.html">Authors</a></li>
-        <li><a href="publishers.html">Publishers</a></li>
-        <li><a href="books.html">Books</a></li>
+        <li><a href="persons.html">Persons</a></li>
+        <li><a href="movies.html">Movies</a></li>
       </ul>
     </nav>
   </div>
@@ -38,42 +37,36 @@
 <main>
   <div class="wrapper clearfix">
     <!-- ======================================================= -->
-    <section id="Publisher-M" class="UI-Page">
+    <section id="Person-M" class="UI-Page">
       <!-- ======================================================= -->
-      <h1>Manage publisher data</h1>
+      <h1>Manage person data</h1>
       <ul class="menu">
         <li>
-          <button type="button" id="RetrieveAndListAll">
-            Retrieve and list all publisher records
+          <button type="button" id="RetrieveAndListAll">Retrieve/list all
+            person records
           </button>
         </li>
         <li>
-          <button type="button" id="Create">
-            Create a new publisher record
-          </button>
+          <button type="button" id="Create">Create a new person record</button>
         </li>
         <li>
-          <button type="button" id="Update">
-            Update a publisher record
-          </button>
+          <button type="button" id="Update">Update a person record</button>
         </li>
         <li>
-          <button type="button" id="Delete">
-            Delete a publisher record
-          </button>
+          <button type="button" id="Delete">Delete a person record</button>
         </li>
       </ul>
       <div class="button"><a href="index.html">Back to Main menu</a></div>
     </section>
     <!-- ======================================================= -->
-    <section id="Publisher-R" class="UI-Page">
+    <section id="Person-R" class="UI-Page">
       <!-- ======================================================= -->
-      <h1>Retrieve and list all publisher records</h1>
+      <h1>Retrieve and list all person records</h1>
       <table>
         <thead>
         <tr>
+          <th>ID</th>
           <th>Name</th>
-          <th>Address</th>
         </thead>
         <tbody></tbody>
       </table>
@@ -82,15 +75,15 @@
       </div>
     </section>
     <!-- ======================================================= -->
-    <section id="Publisher-C" class="UI-Page">
+    <section id="Person-C" class="UI-Page">
       <!-- ======================================================= -->
-      <h1>Create a new publisher record</h1>
+      <h1>Create a new person record</h1>
       <form>
         <div class="field">
-          <label>Name: <input type="text" name="name"/></label>
+          <label>ID: <input type="text" name="personId"/></label>
         </div>
         <div class="field">
-          <label>Address: <input type="text" name="address"/></label>
+          <label>Name: <input type="text" name="name"/></label>
         </div>
         <div class="button-group">
           <button type="submit" name="commit">Save</button>
@@ -99,34 +92,34 @@
       </form>
     </section>
     <!-- ======================================================= -->
-    <section id="Publisher-U" class="UI-Page">
+    <section id="Person-U" class="UI-Page">
       <!-- ======================================================= -->
-      <h1>Update a publisher record</h1>
+      <h1>Update a person record</h1>
       <form>
         <div class="select-one">
-          <label>Select publisher: <select name="selectPublisher"></select></label>
+          <label>Select person: <select name="selectPerson"></select></label>
         </div>
         <div class="field">
-          <label>Name:
-            <output name="name"></output>
+          <label>ID:
+            <output name="personId"></output>
           </label>
         </div>
         <div class="field">
-          <label>Address: <input type="text" name="address"/></label>
+          <label>Name: <input type="text" name="name"/></label>
         </div>
         <div class="button-group">
-          <button type="submit" name="commit">Save changes</button>
+          <button type="submit" name="commit">Save</button>
           <button type="button" class="back-to-menu">Back to menu</button>
         </div>
       </form>
     </section>
     <!-- ======================================================= -->
-    <section id="Publisher-D" class="UI-Page">
+    <section id="Person-D" class="UI-Page">
       <!-- ======================================================= -->
-      <h1>Delete a publisher record</h1>
+      <h1>Delete a person record</h1>
       <form>
         <div class="select-one">
-          <label>Select publisher: <select name="selectPublisher"></select></label>
+          <label>Select person: <select name="selectPersons"></select></label>
         </div>
         <div class="button-group">
           <button type="submit" name="commit">Delete</button>
@@ -138,7 +131,7 @@
 </main>
 <footer>
   <div class="foot-content wrapper">
-    Copyright © 2013-2021 Gerd Wagner,
+    Copyright © 2015-2021 Gerd Wagner,
     <a rel="license" href="https://www.codeproject.com/info/cpol10.aspx">The Code Project Open License (CPOL)</a>.
   </div>
 </footer>

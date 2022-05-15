@@ -38,9 +38,8 @@
     </div>
     <nav>
       <ul>
-        <li><a href="authors.html">Authors</a></li>
-        <li><a href="publishers.html">Publishers</a></li>
-        <li><a href="books.html">Books</a></li>
+        <li><a href="persons.html">Persons</a></li>
+        <li><a href="movies.html">Movies</a></li>
       </ul>
     </nav>
   </div>
@@ -55,9 +54,8 @@
     <p>This app supports the following operations:</p>
     <div class="two-col-menu">
       <ul class="menu">
-        <li><a href="authors.html">Manage author data</a></li>
-        <li><a href="publishers.html">Manage publisher data</a></li>
-        <li><a href="books.html">Manage book data</a></li>
+        <li><a href="persons.html">Manage person data</a></li>
+        <li><a href="movies.html">Manage movie data</a></li>
       </ul>
       <ul class="menu">
         <li><button type="button" class="generateTestData">Generate test data</button></li>
@@ -66,12 +64,12 @@
     </div>
     <p>For playing with the app, you may first want to
       <button type="button" class="generateTestData">Generate test data</button>
-      and then view it (e.g. by choosing "Manage books" and then "Retrieve and list all books"). For observing
+      and then view it (e.g. by choosing "Manage movies" and then "Retrieve and list all movies"). For observing
       the internal status and error messages, turn on the JavaScript console.
     </p>
-    <p>This JavaScript front-end data management app takes care of the object types <code>Author</code>,
-      <code>Publisher</code> and <code>Book</code> as well as the two <strong>unidirectional associations that assign
-        a publisher and (one or more) authors to a book</strong>. The app supports the four standard data management operations
+    <p>This JavaScript front-end data management app takes care of the object types <code>Actors</code>,
+      <code>Directors</code> and <code>Movies</code> as well as the two <strong>unidirectional associations that assign
+        a director and (zero or more) actors to a movie</strong>. The app supports the four standard data management operations
       (<strong>C</strong>reate/<strong>R</strong>etrieve/<strong>U</strong>pdate/<strong>D</strong>elete).
       It extends the <a href="../2-ValidationApp/index.html">Validation App</a> by adding code for handling
       <strong>unidirectional associations</strong>.</p>

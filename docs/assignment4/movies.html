@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>Plain JS Unidirectional Association App: Manage Books</title>
+  <title>Plain JS Unidirectional Association App: Manage Movies</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
   <meta name="theme-color" content="#ffffff"/>
@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/normalize.css"/>
   <link rel="stylesheet" href="css/main.css"/>
 
-  <script src="src/v/books.mjs" type="module"></script>
+  <script src="src/v/movies.mjs" type="module"></script>
 </head>
 <body>
 <header>
@@ -28,9 +28,8 @@
     </div>
     <nav>
       <ul>
-        <li><a href="authors.html">Authors</a></li>
-        <li><a href="publishers.html">Publishers</a></li>
-        <li><a href="books.html">Books</a></li>
+        <li><a href="persons.html">Persons</a></li>
+        <li><a href="movies.html">Movies</a></li>
       </ul>
     </nav>
   </div>
@@ -38,39 +37,39 @@
 <main>
   <div class="wrapper clearfix">
     <!-- ======================================================= -->
-    <section id="Book-M" class="UI-Page">
+    <section id="Movie-M" class="UI-Page">
       <!-- ======================================================= -->
-      <h1>Manage book data</h1>
+      <h1>Manage movie data</h1>
       <ul class="menu">
         <li>
-          <button type="button" id="RetrieveAndListAll">Retrieve/list all book
+          <button type="button" id="RetrieveAndListAll">Retrieve/list all movie
             records
           </button>
         </li>
         <li>
-          <button type="button" id="Create">Create a new book record</button>
+          <button type="button" id="Create">Create a new movie record</button>
         </li>
         <li>
-          <button type="button" id="Update">Update a book record</button>
+          <button type="button" id="Update">Update a movie record</button>
         </li>
         <li>
-          <button type="button" id="Delete">Delete a book record</button>
+          <button type="button" id="Delete">Delete a movie record</button>
         </li>
       </ul>
       <div class="button"><a href="index.html">Back to Main menu</a></div>
     </section>
     <!-- ======================================================= -->
-    <section id="Book-R" class="UI-Page">
+    <section id="Movie-R" class="UI-Page">
       <!-- ======================================================= -->
-      <h1>Retrieve and list all book records</h1>
+      <h1>Retrieve and list all movie records</h1>
       <table>
         <thead>
         <tr>
-          <th>ISBN</th>
+          <th>Movie ID</th>
           <th>Title</th>
-          <th>Year</th>
-          <th>Authors</th>
-          <th>Publisher</th>
+          <th>Release Date</th>
+          <th>Director</th>
+          <th>Actors</th>
         </tr>
         </thead>
         <tbody></tbody>
@@ -80,25 +79,26 @@
       </div>
     </section>
     <!-- ======================================================= -->
-    <section id="Book-C" class="UI-Page">
+    <section id="Movie-C" class="UI-Page">
       <!-- ======================================================= -->
-      <h1>Create a new book record</h1>
+      <h1>Create a new movie record</h1>
       <form>
         <div class="field">
-          <label>ISBN: <input type="text" name="isbn"/></label>
+          <label>MovieID: <input type="text" name="movieId"/></label>
         </div>
         <div class="field">
           <label>Title: <input type="text" name="title"/></label>
         </div>
         <div class="field">
-          <label>Year: <input type="text" name="year"/></label>
+          <label>Release Date: <input type="date" name="reDate"/></label>
         </div>
         <div class="select-one">
-          <label>Publisher: <select name="selectPublisher"></select></label>
+          <label>Director: 
+            <select name="selectPersons"></select></label>
         </div>
         <div class="select-many">
           <label>Authors:
-            <select name="selectAuthors" multiple="multiple"></select>
+            <select name="selectPersons" multiple="multiple"></select>
           </label>
         </div>
         <div class="button-group">
@@ -108,30 +108,30 @@
       </form>
     </section>
     <!-- ======================================================= -->
-    <section id="Book-U" class="UI-Page">
+    <section id="Movie-U" class="UI-Page">
       <!-- ======================================================= -->
-      <h1>Update a book record</h1>
+      <h1>Update a movie record</h1>
       <form autocomplete="off">
         <div class="select-one">
-          <label>Select book: <select name="selectBook"></select></label>
+          <label>Select movie: <select name="selectMovie"></select></label>
         </div>
         <div class="field">
-          <label>ISBN:
-            <output name="isbn"></output>
+          <label>Movie ID:
+            <output name="movieId"></output>
           </label>
         </div>
         <div class="field">
           <label>Title: <input type="text" name="title"/></label>
         </div>
         <div class="field">
-          <label>Year: <input type="text" name="year"/></label>
+          <label>Release Date: <input type="date" name="reDate"/></label>
         </div>
         <div class="select-one">
-          <label>Publisher: <select name="selectPublisher"></select></label>
+          <label>Director: <select name="selectPersons"></select></label>
         </div>
         <div class="widget">
-          <label for="updBookSelectAuthors">Authors:</label>
-          <div id="updBookSelectAuthors" class="MultiSelectionWidget"></div>
+          <label for="updMovieSelectActors">Actors:</label>
+          <div id="updMovieSelectActors" class="MultiSelectionWidget"></div>
         </div>
         <div class="button-group">
           <button type="submit" name="commit" disabled="disabled">Save</button>
@@ -140,12 +140,12 @@
       </form>
     </section>
     <!-- ======================================================= -->
-    <section id="Book-D" class="UI-Page">
+    <section id="Movie-D" class="UI-Page">
       <!-- ======================================================= -->
-      <h1>Delete a book record</h1>
+      <h1>Delete a movie record</h1>
       <form>
         <div class="select-one">
-          <label>Select book: <select name="selectBook"></select></label>
+          <label>Select movie: <select name="selectMovie"></select></label>
         </div>
         <div class="button-group">
           <button type="submit" name="commit">Delete</button>
