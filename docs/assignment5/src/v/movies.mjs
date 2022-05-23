@@ -31,14 +31,13 @@ for (const frm of document.querySelectorAll("section > form")) {
   });
 }
 // save data when leaving the page
-window.addEventListener("beforeunload", function () {
-  Movie.saveAll();
-});
+window.addEventListener("beforeunload", Movie.saveAll);
 
 /**********************************************
  Use case Retrieve/List All Movies
  **********************************************/
-document.getElementById("RetrieveAndListAll").addEventListener("click", function () {
+document.getElementById("RetrieveAndListAll")
+    .addEventListener("click", function () {
   document.getElementById("Movie-M").style.display = "none";
   document.getElementById("Movie-R").style.display = "block";
   const tableBodyEl = document.querySelector("section#Movie-R>table>tbody");
@@ -52,7 +51,7 @@ document.getElementById("RetrieveAndListAll").addEventListener("click", function
     row.insertCell().textContent = movie.reDate.toLocaleDateString("en-EN");
     row.insertCell().textContent = movie.director.name;
     if(movie.actors){
-    const actListEl = createListFromMap( movie.actors, {displayProp: "name"});
+    const actListEl = createListFromMap( movie.actors, "name");
     row.insertCell().appendChild( actListEl);
     }else {
       row.insertCell().textContent = "";

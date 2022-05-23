@@ -76,9 +76,13 @@ class Movie {
     }
 }
   set title( t) {
-    this._title = t;
+    const validationResult = Movie.checkTitle( t);
+    if (validationResult instanceof NoConstraintViolation) {
+      this._title = t;
+    } else {
+      throw validationResult;
+    }
   }
-
   get reDate() {
     return this._reDate;
   }
@@ -109,7 +113,7 @@ class Movie {
         "A movie has to have its director!");
     } else {
       // invoke foreign key constraint check
-      validationResult = Person.checkPersonIdAsIdRef( director_id);
+      validationResult = Person.checkPersonIdAsIdRef( director_id.personId);
     }
     return validationResult;
   }
@@ -149,9 +153,8 @@ class Movie {
       const validationResult = Movie.checkActors( actor_id);
       if (actor_id && validationResult instanceof NoConstraintViolation) {
         // add the new actor reference
-        this._actors[actor_id] = Person.instances[actor_id];
-        // automatically add the derived inverse reference
-        this._actors[actor_id].playedMovies[this._movieId] = this;
+        const key = String( actor_id);
+        this._actors[key] = Person.instances[key];
       } else {
         throw validationResult;
       }
@@ -160,14 +163,14 @@ class Movie {
   removeActor( a) {
     // a can be an ID reference or an object reference
     const actor_id = (typeof a !== "object") ? parseInt( a) : a.personId;
-    const validationResult = Movie.checkActors( actor_id); 
-    if (validationResult instanceof NoConstraintViolation) {
-      // delete the actor reference
-      delete this._actors[actor_id];
-      // automatically delete the derived inverse reference
-      delete this._actors[actor_id].playedMovies[this._movieId];
-    } else {
-      throw validationResult;
+    if (actor_id) {
+      const validationResult = Movie.checkPerson( actor_id);
+      if (validationResult instanceof NoConstraintViolation) {
+        // delete the actor reference
+        delete this._actors[String( actor_id)];
+      } else {
+        throw validationResult;
+      }
     }
   }
   set actors( a) {
@@ -193,24 +196,23 @@ class Movie {
     var rec = {};
     for (const p of Object.keys( this)) {
       // copy only property slots with underscore prefix
-      if (p.charAt(0) !== "_") {
-        switch (p) {
-          case "_director":
-            // convert object reference to ID reference
-            if(this._director) rec.director_id = this._director.personId;
-            break;
-          case "_actors":
-            // convert the map of object references to a list of ID references
-            if (this._actors){ 
-            rec.actors_id = [];
-            for (const actorid of Object.keys( this.actors)) {
-              rec.actors_id.push( parseInt( actorid));
-            }}
-            break;
-          default:
-            // remove underscore prefix
-            rec[p.substr(1)] = this[p];
-        }
+      if (p.charAt(0) !== "_") continue;
+      switch (p) {
+        case "_director":
+          // convert object reference to ID reference
+          rec.director_id = this._director.personId;
+          break;
+        case "_actors":
+          // convert the map of object references to a list of ID references
+          if (this._actors){ 
+          rec.actors_id = [];
+          for (const actorid of Object.keys( this.actors)) {
+            rec.actors_id.push( parseInt( actorid));
+          }}
+          break;
+        default:
+          // remove underscore prefix
+          rec[p.substr(1)] = this[p];
       }
     }
     return rec;
@@ -295,30 +297,13 @@ Movie.update = function ({movieId, title, reDate,
  *  Delete an existing Movie record/object
  */
 Movie.destroy = function (movieId) {
-  const movie = Movie.instances[movieId];
-  if (movie) {
-    console.log(`${movie.toString()} deleted!`);
-    if (movie.director) {
-      // remove inverse reference from director
-      delete movie.director.directedMovies[movieId];
-    }
-    // remove inverse references from all actors
-    for (const actorID of Object.keys( movie.actors)) {
-      delete movie.actors[actorID].playedMovies[movieId];
-    }
-    // finally, delete movie from Movie.instances
-    delete Movie.instances[movieId];
-  } else {
-    console.log(`There is no movie with Movie ID ${isbn} in the database!`);
-  }
-};
-  /* if (Movie.instances[movieId]) {
+  if (Movie.instances[movieId]) {
     console.log(`${Movie.instances[movieId].toString()} deleted!`);
     delete Movie.instances[movieId];
   } else {
     console.log(`There is no movie with Movie ID ${movieId} in the database!`);
   }
-};*/
+};
 /**
  *  Load all movie table rows and convert them to objects 
  *  Precondition: directors and people must be loaded first
@@ -348,8 +333,9 @@ Movie.retrieveAll = function () {
 Movie.saveAll = function () {
   const nmrOfMovies = Object.keys( Movie.instances).length;
   try {
-    localStorage["movies"] = JSON.stringify(Movie.instances);
-    console.log(`${nmrOfMovies} movies saved`)
+    var moviesString = JSON.stringify(Movie.instances);
+    console.log(`${moviesString}`)
+    localStorage["movies"] = moviesString;
   } catch (e) {
     alert( "Error when writing to Local Storage\n" + e);
   }
