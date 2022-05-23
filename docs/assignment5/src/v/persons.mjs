@@ -48,6 +48,8 @@ document.getElementById("RetrieveAndListAll")
     const row = tableBodyEl.insertRow();
     row.insertCell().textContent = person.personId;
     row.insertCell().textContent = person.name;
+    row.insertCell().textContent = person.directedMovies;
+    row.insertCell().textContent = person.playedMovies;
   }
   document.getElementById("Person-M").style.display = "none";
   document.getElementById("Person-R").style.display = "block";
