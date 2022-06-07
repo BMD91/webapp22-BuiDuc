@@ -44,31 +44,31 @@ function generateTestData() {
       subjectArea: ""
     });
     Movie.saveAll();
-    Actor.instances["1001"] = new Actor({
-      personId: 1001,
+    Actor.instances["1"] = new Actor({
+      personId: 1,
       name: "Harry Wagner",
-      biography: "Nothing can change"
+      biography: "Born in Boston, MA, in 1956, ..."
     });
-    Actor.instances["1002"] = new Actor({
-      personId: 1002,
+    Actor.instances["2"] = new Actor({
+      personId: 2,
       name: "Peter Boss",
       biography: "In the ocean of knowledge"
     });
     Actor.saveAll();
-    Director.instances["1001"] = new Director({
-      personId: 1001,
+    Director.instances["1"] = new Director({
+      personId: 1,
       name: "Harry Wagner",
       biography: "Born in Boston, MA, in 1956, ..."
     });
-    Director.instances["1077"] = new Director({
-      personId: 1077,
+    Director.instances["2"] = new Director({
+      personId: 3,
       name: "Immanuel Kant",
       biography: "Immanuel Kant (1724-1804) was a German philosopher ..."
     });
     Director.saveAll();
     // an example of a person that is neither an actor, nor an director
-    Person.instances["1003"] = new Person({
-      personId:1003,
+    Person.instances["4"] = new Person({
+      personId:4,
       name:"Tom Daniels",
       biography: "Born in London"
     });
