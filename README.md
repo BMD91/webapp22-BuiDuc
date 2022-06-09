@@ -37,6 +37,9 @@ Sunny garden
 <br/>
 With these abtract functions, we can control and manage well qualification and rating of the shop. For example, when the shop have new orders or new products, the owner can use this app to manage them.
 
+### Title of application
+"Storder" - which stands for "Storage" and "Orders"
+
 ### List of management tasks
 * Creating information of a plant / plants, which is new products of shop. Information should be: ID of plants, name, individual price (for a single unit) and suitable type of vase / pot.
 * Retrieving data of plants as a list, which are currently in store of shop.
