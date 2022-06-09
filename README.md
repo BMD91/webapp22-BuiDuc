@@ -6,7 +6,7 @@ This is a small project in B-TU for creating a web application
 
 ### Developer
 
-[Polewska, Katarzyna Weronika]
+[Polewska, Katarzyna Weronika](https://github.com/Polewska)
 
 ## Business description
 
@@ -25,3 +25,7 @@ Sunny garden
 	+ Phone numbers: +84 878211389
 	+ Facebook: www.facebook.com/nangochonaychokia
 * A brief portrait of customer's business: Selling and providing information about in-house trees and plants for all customers.
+
+### 
+### Requirements from client
+* 
