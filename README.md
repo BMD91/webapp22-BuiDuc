@@ -33,7 +33,7 @@ Sunny garden
 
 ### Support from a web application
 * Management of all plants in the shop.
-* Management of all orders from customers, those who bought products of shop.
+* Management of all orders from customers, those who bought products of shop.<br/>
 With these abtract functions, we can control and manage well qualification and rating of the shop. For example, when the shop have new orders or new products, the owner can use this app to manage them.
 
 ### List of management tasks
