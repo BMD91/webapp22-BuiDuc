@@ -49,7 +49,19 @@ With these abtract functions, we can control and manage well qualification and r
 * Creating information of an order from a customer. It contains: customer ID, name of customer, plants they bought and total price of the order.
 * Retrieving data of orders in a list.
 * Updating information of an order by changing name of customer or changing name of products or changing price.
-* Deleting data of an order, because it can be wrong or customer does not want to by products anymore.
+* Deleting data of an order, because it can be wrong or customer does not want to buy products anymore.
 
 * Creating data of vase / pot : vase id, size of vase and price.
 * Retrieving list of vase.
+
+
+### Developer Input:
+
+### Changes that will be applied based on "Issues" posted
+
+* removing the CustomerId and replacing it with OrderId. 
+* creating additional property to save the number of plants/vases available in storage 
+* adding new property called "Destination" or "shipment adress" to the Table of Orders
+
+### UML class diagram
+
