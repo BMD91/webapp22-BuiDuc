@@ -65,3 +65,6 @@ With these abtract functions, we can control and manage well qualification and r
 
 ### UML class diagram
 
+Initial Design: 
+<img src="docs/images/Plant Store App Design Model.drawio.png">
+
