@@ -71,6 +71,7 @@ With these abtract functions, we can control and manage well qualification and r
 
 ### Design Model
 
-Initial Design: 
+
+
 <img src="docs/images/Plant Store App Design Model last.drawio.png">
 
