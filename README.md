@@ -64,8 +64,11 @@ With these abtract functions, we can control and manage well qualification and r
 * adding new property called "Destination" or "shipment adress" to the Table of Orders for testing porpouses the country of destination will be germany
 * adding enumaration descirbing vase sizes 
 
-### UML class diagram
+### Domain Model
+
+<img src="docs/images/Plant Store Domain Model last.drawio.png">
+### Design Model
 
 Initial Design: 
-<img src="docs/images/Plant Store App Design Model final.drawio.png">
+<img src="docs/images/Plant Store App Design Model last.drawio.png">
 
