@@ -67,6 +67,8 @@ With these abtract functions, we can control and manage well qualification and r
 ### Domain Model
 
 <img src="docs/images/Plant Store Domain Model.drawio.png">
+
+
 ### Design Model
 
 Initial Design: 
