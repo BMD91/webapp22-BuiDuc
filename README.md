@@ -60,8 +60,9 @@ With these abtract functions, we can control and manage well qualification and r
 ### Changes that will be applied based on "Issues" posted
 
 * removing the CustomerId and replacing it with OrderId. 
-* creating additional property to save the number of plants/vases available in storage 
-* adding new property called "Destination" or "shipment adress" to the Table of Orders
+* creating additional property to save the number of plants/vases available in storage (to class Plant and Vase
+* adding new property called "Destination" or "shipment adress" to the Table of Orders for testing porpouses the country of destination will be germany
+* adding enumaration descirbing vase sizes 
 
 ### UML class diagram
 
