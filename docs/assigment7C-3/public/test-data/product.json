@@ -1,0 +1,22 @@
+[
+  {
+    "productId": "1",
+    "vaseSize": 2
+  },
+  {
+    "productId": "2",
+    "vaseSize": 4
+  },
+  {
+    "productId": "3",
+    "vaseSize": 3
+  },
+  {
+    "productId": "4",
+    "vaseSize": 2
+  },
+  {
+    "productId": "5",
+    "vaseSize": 1
+  }
+]

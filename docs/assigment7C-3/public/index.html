@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>JS/Firebase Web App with Enumeration</title>
+  <meta name="description" content="A JS/Firebase Web App with enumeration attributes."/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#ffffff"/>
+  <link rel="icon" href="favicon.svg"/>
+  <link rel="mask-icon" href="mask-icon.svg" color="#000000"/>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+  <link rel="manifest" href="manifest.json"/>
+  <link rel="stylesheet" href="css/normalize.css"/>
+  <link rel="stylesheet" href="css/main.css"/>
+  <script type="module">
+    import {handleAuthentication} from "./js/v/accessControl.mjs";
+    import Order from "./js/m/Order.mjs";
+    import Product from "./js/m/Product.mjs"
+
+    handleAuthentication();
+    window.addEventListener("load", function () {
+      const clearButton = document.getElementById("clearData"),
+        generateTestDataButtons = document.querySelectorAll("button.generateTestData");
+      // set event handlers for the buttons "clearData" and "generateTestData"
+      clearButton.addEventListener("click", Order.clearData);
+      clearButton.addEventListener("click", Product.clearData);
+      for (const btn of generateTestDataButtons) {
+        btn.addEventListener("click", Order.generateTestData);
+        btn.addEventListener("click", Product.generateTestData);
+      }
+    });
+  </script>
+</head>
+<body>
+<div id="login-management"></div>
+<div class="wrapper clearfix">
+  <div class="title">
+    <figure>
+    <h1>Public Library</h1>
+    <h2>JS/Firebase Enumeration App</h2>
+    <h3>An example of a plain JS and Firebase Web App with enumeration attributes.</h3>
+    </a>
+    </figure>
+  </div>
+</div>
+</header>
+<main>
+  <div class="wrapper clearfix">
+    <p>This app, which is accompanied by a
+      <a href="https://webengineering.netlify.app/js-firebase/enumeration-app/">tutorial</a>, is the
+      3rd example app	of our incremental sequence of six examples of
+      <a href="#">Plain JavaScript and Firebase Web Apps</a>.
+      This app supports the following operations:</p>
+    <div class="two-col-menu">
+      <menu class="crud">
+    <li role="menuitem">
+      <a href="createOrder.html" class="disabled">Create a new order record</a>
+    </li>
+    <li role="menuitem">
+      <a href="retrieveAndListAllOrders.html">Retrieve and list all order records</a>
+    </li>
+    <li role="menuitem">
+      <a href="updateOrder.html" class="disabled">Update a order record</a>
+    </li>
+    <li role="menuitem">
+      <a href="deleteOrder.html" class="disabled">Delete a order record</a>
+    </li>
+    <div>For purpose of the assigment 7-3, there are 4 additional actions connected to new class called Product. This will allow to test enumerations</div>
+    <li role="menuitem">
+      <a href="createProduct.html" class="disabled">Create a new product record</a>
+    </li>
+    <li role="menuitem">
+      <a href="retrieveAndListAllProducts.html">Retrieve and list all product records</a>
+    </li>
+    <li role="menuitem">
+      <a href="updateProduct.html" class="disabled">Update a product record</a>
+    </li>
+    <li role="menuitem">
+      <a href="deleteProduct.html" class="disabled">Delete a product record</a>
+    </li>
+    <li role="menuitem">
+      <button class="generateTestData" type="button" disabled="disabled">Generate test data</button>
+    </li>
+    <li role="menuitem">
+      <button id="clearData" type="button" disabled="disabled">Clear database</button>
+    </li>
+  </menu>
+  <p>For playing with the app, you may:
+    <button class="generateTestData" type="button" disabled="disabled">Generate test data</button>
+    ,
+  </p>
+  </div>
+</main>
+<footer>
+  <hr/>
+  Copyright © 2020-2022 Gerd Wagner and Juan-Francisco Reyes. <a href="credits.html">Credits and License</a>
+</footer>
+</body>
+</html>

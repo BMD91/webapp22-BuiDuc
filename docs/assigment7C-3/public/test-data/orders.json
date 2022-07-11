@@ -1,0 +1,24 @@
+[
+  {
+    "orderId": "1",
+    "customerName": "John Doe",
+    "dateOfPurchase": "2012/10/12",
+    "deliveryAddress": "main street germany",
+    "finalPrice": 19.40
+  },
+  {
+    "orderId": "2",
+    "customerName": "Jane Miller",
+    "dateOfPurchase": "2021/2/3",
+    "deliveryAddress": "Bahnhoffstrasse Cottbus Germany",
+    "finalPrice": 20.32
+  },
+  {
+    "orderId": "3",
+    "customerName": "Tom Brady",
+    "dateOfPurchase": "2020/3/12",
+    "deliveryAddress": "Marktstrasse Cottbus Germany",
+    "finalPrice": 123.32
+  }
+
+]
