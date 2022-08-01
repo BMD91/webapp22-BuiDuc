@@ -1,0 +1,112 @@
+rules_version = '2';
+service cloud.firestore {
+    match /databases/{database}/documents {
+
+        /** Validation functions for Order **/
+        //check if order Id is a string of numbers or if its not empty
+        function checkOrderId(orderId) {
+            return orderId.matches('^[0-9]+$') && orderId != null;
+        }
+        //check if orderId is unique
+        function checkOrderIdAsId(orderId){
+            return !(exists(/databases/$(database)/documents/orders/$(orderId)));
+        }
+
+        // check if finalPrice is an int, is grater then 0 and is not empty
+        function checkFinalPrice(finalPrice){
+            return finalPrice > 0 && finalPrice is number && finalPrice != null;
+        }
+
+        // check if DateOfPurchase is a timestamp and not empty
+        function checkDateOfPurchase(dateOfPurchase){
+            return dateOfPurchase != null && dateOfPurchase is timestamp;
+        }
+        // validation rules for Class Order
+        match /orders/{docID} {
+            //allow everyone to read the DB
+            allow read: if request.auth != null;
+
+            //allow only authorised users with validated email to create. Calls functions listed above and additionally checks if the
+            // customerName and deliveryAdress is not empty
+            allow create: if request.auth.token.email_verified == true
+                            && checkOrderIdAsId(request.resource.data.orderId) == true
+                            && checkOrderId(request.resource.data.orderId) == true
+                            && request.resource.data.customerName != null
+                            && checkDateOfPurchase(request.resource.data.dateOfPurchase ) == true
+                            && request.resource.data.deliveryAddress != null
+                            && checkFinalPrice(request.resource.data.finalPrice) == true;
+
+            //allow only authorised users with validated email to update. check if only the 'customerName','dateOfPurchase','deliveryAddress', 'finalPrice'
+            //are being changed. check if the rules for those values apply
+            allow update: if request.auth.token.email_verified == true
+                            && (request.resource.data.diff( resource.data).affectedKeys()
+                                .hasOnly(['customerName','dateOfPurchase','deliveryAddress','orderLineIdRef', 'finalPrice']))
+                            && request.resource.data.customerName != null
+                            &&  checkDateOfPurchase(request.resource.data.dateOfPurchase ) == true
+                            && request.resource.data.deliveryAddress != null
+                            && checkFinalPrice(request.resource.data.finalPrice) == true;
+
+            //allow only authorised users with validated email to delete.
+            allow delete: if request.auth.token.email_verified == true;
+        }
+
+        /** Validation functions for Product **/
+
+        //check if productId is string of numbers and not empty
+        function checkProductId(productId) {
+             return productId.matches('^[0-9]+$') && productId != null;
+        }
+
+        //check if productId unique
+        function checkProductIdAsId(productId){
+                         return !(exists(/databases/$(database)/documents/products/$(productId)));
+        }
+        //I have put <5 because max Enum value is 4, check if the value for enum is int between 1 and 4
+        function checkVaseSize(vaseSize){
+            return (vaseSize is int || vaseSize.matches('^[0-9]+$')) && vaseSize > 0 && vaseSize < 5;
+        }
+        function checkCategory(category){
+                    return (category is int || category.matches('^[0-9]+$')) && category > 0 && category < 3;
+                }
+        //name.matches('^[a-zA-Z](\s)*$')
+        function checkName(name){
+                    return name != null
+        }
+        function checkPrice(price){
+            return price > 0 && price is number && price != null;
+        }
+
+        match /products/{docID} {
+            //allow every user to read the DB
+            allow read: if request.auth != null;
+
+            //allow only authorised users with validated email to  create. check the validity of vlaues
+            //by calling the functions listed above
+            allow create: if request.auth.token.email_verified == true
+                       && checkProductIdAsId(request.resource.data.productId) == true
+                       && checkProductId(request.resource.data.productId) == true
+                       && checkVaseSize(request.resource.data.vaseSize) == true
+                       && checkCategory(request.resource.data.category) == true
+                       && checkName(request.resource.data.name) == true;
+
+            //allow only authorised users with validated email to update. check if only vaseSize is being changed
+            // check if value is valid
+            allow update: if request.auth.token.email_verified == true
+                       && (request.resource.data.diff( resource.data).affectedKeys()
+                           .hasOnly(['vaseSize', 'category', 'name', 'price']))
+                       && checkVaseSize(request.resource.data.vaseSize) == true
+                       && checkCategory(request.resource.data.category) == true
+                       && checkName(request.resource.data.name) == true
+                       && checkPrice(request.resource.data.price) == true;
+
+            //allow only authorised users with validated email to delete.
+            allow delete: if request.auth.token.email_verified == true;
+        }
+        match /inLines/{docID} {
+            allow read: if request.auth != null;
+            allow create : if request.auth.token.email_verified == true;
+            allow update: if request.auth.token.email_verified == true;
+            allow delete : if request.auth.token.email_verified == true;
+        }
+    }
+}

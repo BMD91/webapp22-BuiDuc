@@ -1,0 +1,30 @@
+[
+  {
+    "orderId": "1",
+    "customerName": "John Doe",
+    "dateOfPurchase": "2012/10/12",
+    "deliveryAddress": "main street germany",
+    "orderLineIdRef":  [{"id": 3, "name": "Monstera Adonisa", "amount": 3, "price": 156.00},
+      {"id": 2, "name": "Monstera", "amount": 2, "price": 104.00}],
+    "finalPrice": 260
+  },
+  {
+    "orderId": "2",
+    "customerName": "Jane Miller",
+    "dateOfPurchase": "2021/2/3",
+    "deliveryAddress": "Bahnhoffstrasse Cottbus Germany",
+    "orderLineIdRef":  [{"id": 8, "name": "stardust", "amount": 3, "price": 30.00},
+      {"id": 11, "name": "Snake Plant", "amount": 1, "price": 15.99}],
+    "finalPrice": 45.99
+  },
+  {
+    "orderId": "3",
+    "customerName": "Tom Brady",
+    "dateOfPurchase": "2020/3/12",
+    "deliveryAddress": "Marktstrasse Cottbus Germany",
+    "orderLineIdRef":  [{"id": 1, "name": "Monstera Adonisa", "amount": 1, "price": 52.00},
+      {"id": 23, "name": "moon vase", "amount": 3, "price": 45.00}],
+    "finalPrice": 97.00
+  }
+
+]

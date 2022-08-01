@@ -1,0 +1,37 @@
+[
+  {
+    "productId": "1",
+    "vaseSize": 2,
+    "category": 1,
+    "name": "Monstera Adonisa",
+    "price": 52.00
+  },
+  {
+    "productId": "2",
+    "vaseSize": 4,
+    "category": 2,
+    "name": "stardust",
+    "price": 10.00
+  },
+  {
+    "productId": "3",
+    "vaseSize": 3,
+    "category": 1,
+    "name": "Snake Plant",
+    "price": 15.99
+  },
+  {
+    "productId": "4",
+    "vaseSize": 2,
+    "category": 1,
+    "name": "Philodendron arueum",
+    "price": 35.50
+  },
+  {
+    "productId": "5",
+    "vaseSize": 1,
+    "category": 2,
+    "name": "moon vase",
+    "price": 15.00
+  }
+]
